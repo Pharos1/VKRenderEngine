@@ -17,6 +17,8 @@
   <ItemGroup>
     <None Include="Shaders\main.vert" />
     <None Include="Shaders\main.frag" />
+    <None Include="Shaders\postproc.frag" />
+    <None Include="Shaders\postproc.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Vertex.h">
@@ -25,13 +27,13 @@
     <ClInclude Include="src\Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Application.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\DeltaTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

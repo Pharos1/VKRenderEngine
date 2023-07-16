@@ -75,8 +75,8 @@ struct Camera {
 		yaw += xOffset;
 		pitch += yOffset;
 
-		if (pitch >= 90.f) pitch = 90.f;
-		if (pitch <= -90.f) pitch = -90.f;
+		if (pitch >= 90.f) pitch = 89.9f;
+		if (pitch <= -90.f) pitch = -89.9f;
 
 		glm::vec3 dir;
 		dir.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));

@@ -39,10 +39,11 @@ void processMouse(GLFWwindow* window, double xPos, double yPos);
 Camera cam({ 0.f, 1.f, -3.f });
 
 int main() {
-	std::string f = std::filesystem::current_path().string(); //Auto-compiles shaders if the project is run from visual studio
+	std::string f = std::filesystem::current_path().string(); //Get working directory.
 	if (strcmp(f.substr(f.find_last_of("\\") + 1).c_str(), "VKRenderEngine") == 0) {
 		system("cd Shaders && spv.bat");
 	}
+	std::filesystem::current_path(std::filesystem::path(__FILE__).parent_path().parent_path()); //Working dir = solution path
 
 	App::initVulkan();
 	glfwSetCursorPosCallback(App::window, processMouse);
@@ -51,13 +52,11 @@ int main() {
 	App::model = glm::mat4(1.f);
 	App::proj = glm::perspective(glm::radians(45.0f), App::swapChainExtent.width / (float)App::swapChainExtent.height, 0.1f, 100.0f);
 	//cam.view = glm::translate(glm::mat4(1.f), glm::vec3(0, 0.f, 3.f));
-
+	
 	while (!glfwWindowShouldClose(App::window)) {
 		glfwPollEvents();
-
 		DT::update();
 		processInput();
-
 		App::view = cam.view;
 
 		App::drawFrame(draw);
@@ -69,7 +68,7 @@ int main() {
 	return 0;
 }
 void draw(VkCommandBuffer commandBuffer, uint32_t imageIndex) {
-	vkCmdDrawIndexed(commandBuffer, static_cast<uint32_t>(App::indices.size()), 1, 0, 0, 0);
+	vkCmdDrawIndexed(commandBuffer, App::indices.size(), 1, 0, 0, 0);
 }
 void processInput() {
 	cam.processInput(App::window);

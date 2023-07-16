@@ -169,6 +169,8 @@ spv.bat</Command>
   <ItemGroup>
     <None Include="Shaders\main.frag" />
     <None Include="Shaders\main.vert" />
+    <None Include="Shaders\postproc.frag" />
+    <None Include="Shaders\postproc.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Application.h" />
